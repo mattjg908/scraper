@@ -4,15 +4,20 @@ defmodule Scraper do
   """
 
   @doc """
-  Hello world.
+  work/0
+
+  For simplicity, this function is just a placeholder and does not contain real
+  scraping logic.
 
   ## Examples
 
-      iex> Scraper.hello()
-      :world
-
+      iex> Scraper.work()
+      :ok
   """
-  def hello do
-    :world
+  def work do
+    1..5
+    |> Enum.random()
+    |> :timer.seconds()
+    |> Process.sleep()
   end
 end
