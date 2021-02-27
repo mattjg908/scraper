@@ -19,6 +19,7 @@ defmodule Scraper.Application do
   def start(_type, _args) do
     children = [
       PageProducer,
+      # Could've used Registry instead of hardcoding names
       Supervisor.child_spec(PageConsumer, id: :consumer_a),
       Supervisor.child_spec(PageConsumer, id: :consumer_b)
     ]
