@@ -7,6 +7,9 @@ defmodule PageConsumer do
     GenStage.start_link(__MODULE__, initial_state)
   end
 
+  @doc """
+  will take at least 1 event when it's available, up to 3 at a time
+  """
   def init(initial_state) do
     Logger.info("PageConsumer init")
     sub_opts = [{PageProducer, min_demand: 0, max_demand: 3}]
