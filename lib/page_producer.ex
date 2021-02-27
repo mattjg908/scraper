@@ -27,4 +27,16 @@ defmodule PageProducer do
     events = []
     {:noreply, events, state}
   end
+
+  def scrape_pages(pages) when is_list(pages) do
+    GenStage.cast(__MODULE__, {:pages, pages})
+  end
+
+  @doc """
+  very similar to GenServer's handle_cast/2 callback but for GenStage there's an
+  events element (pages)
+  """
+  def handle_cast({:pages, pages}, state) do
+    {:noreply, pages, state}
+  end
 end
