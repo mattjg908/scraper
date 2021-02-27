@@ -19,6 +19,9 @@ defmodule Scraper.Application do
   def start(_type, _args) do
     children = [
       PageProducer,
+      # ProducerConsumer must be started before consumers so
+      # OnlinePageProducerConsumer is listed befor PageConsumerSupervisor
+      OnlinePageProducerConsumer,
       PageConsumerSupervisor
     ]
 

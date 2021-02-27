@@ -22,7 +22,7 @@ defmodule PageConsumerSupervisor do
       strategy: :one_for_one,
       subscribe_to: [
         # 2 consumers at most could run concurrently b/c max_demand
-        {PageProducer, max_demand: 2}
+        {OnlinePageProducerConsumer, max_demand: 2}
       ]
     ]
 
