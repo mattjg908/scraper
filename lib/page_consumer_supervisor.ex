@@ -12,6 +12,7 @@ defmodule PageConsumerSupervisor do
     children = [
       %{
         id: PageConsumer,
+        # acts like a template for starting multiple processes
         start: {PageConsumer, :start_link, []},
         restart: :transient
       }
@@ -20,6 +21,7 @@ defmodule PageConsumerSupervisor do
     opts = [
       strategy: :one_for_one,
       subscribe_to: [
+        # 2 consumers at most could run concurrently b/c max_demand
         {PageProducer, max_demand: 2}
       ]
     ]

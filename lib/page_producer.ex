@@ -37,6 +37,7 @@ defmodule PageProducer do
   events element (pages)
   """
   def handle_cast({:pages, pages}, state) do
+    Logger.info("Handling cast")
     {:noreply, pages, state}
   end
 end
